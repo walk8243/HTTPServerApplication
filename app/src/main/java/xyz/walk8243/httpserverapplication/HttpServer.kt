@@ -41,8 +41,8 @@ class HttpServer {
             val socket = server.accept()
             logger.info("accept後")
 
-            logger.finer("InetAddress.HostAddress: " + socket.inetAddress.hostAddress)
-            logger.finer("LocalAddress.HostAddress: " + socket.localAddress.hostAddress)
+            logger.info("InetAddress.HostAddress: " + socket.inetAddress.hostAddress)
+            logger.info("LocalAddress.HostAddress: " + socket.localAddress.hostAddress)
 
             inputStream = BufferedInputStream(socket.getInputStream())
             outputStream = BufferedOutputStream(socket.getOutputStream())
@@ -77,15 +77,15 @@ class HttpServer {
         val text = "output"
 
         output(text)
-        outputStream!!.flush()
     }
     private fun output(text: String) {
+        val lineLastStr = String(byteArrayOf(CR, LF))
         val builder = StringBuilder()
-        builder.append(String.format("HTTP/1.1 %d", 200)).append(String(byteArrayOf(CR, LF)))
-        builder.append("Content-Type: text/html; charset=UTF-8").append(String(byteArrayOf(CR, LF)))
-        builder.append(String.format("Content-Length: %d", text.toByteArray().size)).append(String(byteArrayOf(CR, LF)))
-        builder.append(String(byteArrayOf(CR, LF)))
-        builder.append(text)
+//        builder.append(String.format("HTTP/1.1 %d", 200)).append(lineLastStr)
+//        builder.append("Content-Type: text/plain; charset=UTF-8").append(lineLastStr)
+//        builder.append(String.format("Content-Length: %d", text.toByteArray().size)).append(lineLastStr)
+//        builder.append(lineLastStr)
+        builder.append(text).append(lineLastStr)
 
         logger.info(builder.toString())
         outputStream!!.write(builder.toString().toByteArray())
