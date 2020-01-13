@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/spring-boot-starter-web-2.2.2.RELEASE" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

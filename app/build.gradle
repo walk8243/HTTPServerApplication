@@ -21,6 +21,28 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/CONTRIBUTORS.md'
+        exclude 'META-INF/LICENSE.md'
+        exclude 'META-INF/MANIKEST.MF'
+        exclude 'META-INF/rxjava.properties'
+        exclude 'META-INF/web-fragment.xml'
+        exclude 'META-INF/spring.schemas'
+        exclude 'META-INF/spring.tooling'
+        exclude 'META-INF/spring.handlers'
+        exclude 'META-INF/spring-configuration-metadata.json'
+        exclude 'META-INF/spring.factories'
+        exclude 'META-INF/additional-spring-configuration-metadata.json'
+    }
 }
 
 dependencies {
@@ -32,4 +54,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation ('org.springframework.boot:spring-boot-starter-web:2.2.2.RELEASE') {
+        exclude group: 'jakarta.annotation', module: 'jakarta.annotation-api'
+        exclude group: 'org.apache.tomcat', module: 'tomcat-annotations-api'
+    }
 }

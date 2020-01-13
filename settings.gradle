@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':spring-boot-starter-web-2.2.2.RELEASE'
 rootProject.name='HTTP Server Application'
